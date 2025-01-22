@@ -1,0 +1,13 @@
+- id: 1
+  title: "My First Zine"
+  description: "An introduction to zines and tech."
+  price: 10.00
+  stock: 5
+  image: "first_zine.jpg"
+
+- id: 2
+  title: "Ruby Hacks"
+  description: "A zine about cool Ruby tips and tricks."
+  price: 15.00
+  stock: 3
+  image: "ruby_hacks.jpg"

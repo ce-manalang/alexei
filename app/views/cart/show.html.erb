@@ -1,0 +1,7 @@
+<h1>Your Cart</h1>
+<ul>
+  <% (@cart || {}).each do |zine_id, quantity| %>
+    <li>Zine ID: <%= zine_id %> | Quantity: <%= quantity %></li>
+  <% end %>
+</ul>
+<%= link_to "Back to shop", root_path %>

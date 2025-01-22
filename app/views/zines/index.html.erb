@@ -1,0 +1,10 @@
+<h1>Zine Shop</h1>
+<ul>
+  <% @zines.each do |zine| %>
+    <li>
+      <h2><%= link_to zine["title"], zine_path(zine["id"]) %></h2>
+      <p><%= zine["description"] %></p>
+      <p>Price: $<%= zine["price"] %></p>
+    </li>
+  <% end %>
+</ul>
