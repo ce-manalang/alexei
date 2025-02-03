@@ -2,11 +2,15 @@ class ZinesController < ApplicationController
   require 'yaml'
 
   def index
-    @zines = YAML.load_file(Rails.root.join('data', 'zines.yml'))
+    google_sheets_service = GoogleSheetsService.new
+    spreadsheet_id = Rails.application.credentials.spreadsheet_id
+    @zines = google_sheets_service.get_products(spreadsheet_id)
   end
 
   def show
-    zines = YAML.load_file(Rails.root.join('data', 'zines.yml'))
-    @zine = zines.find { |z| z["id"] == params[:id].to_i }
+    google_sheets_service = GoogleSheetsService.new
+    spreadsheet_id = Rails.application.credentials.spreadsheet_id
+    zines = google_sheets_service.get_products(spreadsheet_id)
+    @zine = zines.find { |z| z[0].to_i == params[:id].to_i }
   end
 end

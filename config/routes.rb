@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'zines#index'
   resources :zines, only: [:index, :show]
-  resource :cart, only: [:show] do
+  resource :cart, only: [:show], to: 'cart#show' do
     post 'add/:id', to: 'cart#add', as: :add
   end
 end

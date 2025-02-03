@@ -50,3 +50,10 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+group :development, :test do
+  gem 'pry', '~> 0.15.0'
+end
+
+gem 'google-apis-sheets_v4', '~> 0.18'
+gem 'googleauth', '~> 1.1'
