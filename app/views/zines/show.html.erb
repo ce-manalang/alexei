@@ -1,5 +1,5 @@
 <h1><%= @zine[1] %></h1>
 <p><%= @zine[2] %></p>
 <p>Price: $<%= @zine[3] %></p>
-<%= button_to 'Add to Cart', add_cart_path(id: @zine[0]), method: :post, class: 'add-to-cart-btn' %>
+<%= button_to 'Add to Cart', add_to_cart_path(product_id: zine[0].to_i), method: :post, class: 'add-to-cart-btn' %>
 <%= link_to "Back to shop", zines_path %>

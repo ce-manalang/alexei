@@ -1,0 +1,47 @@
+<h1>Checkout</h1>
+
+<% if session[:cart].any? %>
+  <h2>Your Cart</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% session[:cart].each do |item| %>
+        <tr>
+          <td><%= item["name"] %></td>
+          <td>$<%= item["price"] %></td>
+          <td><%= item["quantity"] %></td>
+          <td>$<%= item["price"].to_i * item["quantity"].to_i %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h3>Total: $<%= @total_price.to_i %></h3>
+
+  <!-- Checkout form -->
+  <h2>Enter Your Details</h2>
+  <%= form_with url: submit_checkout_path, multipart: true do |form| %>
+    <label for="email">Email:</label>
+    <%= form.email_field :email, required: true %>
+    <br><br>
+
+    <label for="shipping_address">Shipping Address:</label>
+    <%= form.text_area :shipping_address, required: true %>
+    <br><br>
+
+    <label for="proof_of_payment">Upload Proof of Payment:</label>
+    <%= form.file_field :proof_of_payment, required: true %>
+    <br><br>
+
+    <%= form.submit 'Submit Order', class: 'submit-btn' %>
+  <% end %>
+<% else %>
+  <p>Your cart is empty. <%= link_to 'Go back to shopping', root_path %></p>
+<% end %>

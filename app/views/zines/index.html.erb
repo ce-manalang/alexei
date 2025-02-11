@@ -5,7 +5,7 @@
       <h2><%= link_to zine[1], zine_path(zine[0].to_i) %></h2>
       <p><%= zine[2] %></p>
       <p>Price: $<%= zine[3] %></p>
-      <%= button_to 'Add to Cart', add_cart_path(zine[0].to_i), method: :post, class: 'add-to-cart-btn' %>
+      <%= button_to 'Add to Cart', add_to_cart_path(product_id: zine[0].to_i, price: zine[3].to_i), method: :post, class: 'add-to-cart-btn' %>
     </li>
   <% end %>
 </ul>

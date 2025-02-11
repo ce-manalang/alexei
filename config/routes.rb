@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "checkout/index"
+  get "checkout/submit"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -12,7 +14,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'zines#index'
   resources :zines, only: [:index, :show]
-  resource :cart, only: [:show], to: 'cart#show' do
-    post 'add/:id', to: 'cart#add', as: :add
-  end
+
+  get 'cart', to: 'cart#show'
+  post 'cart/add/:product_id', to: 'cart#add', as: 'add_to_cart'
+  delete 'cart/remove/:product_id', to: 'cart#remove', as: 'remove_from_cart'
+  delete 'cart/clear', to: 'cart#clear', as: 'clear_cart'
+
+  # Checkout routes
+  get 'checkout', to: 'checkout#index', as: 'checkout'
+  post 'checkout/submit', to: 'checkout#submit', as: 'submit_checkout'
 end
