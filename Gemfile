@@ -56,6 +56,6 @@ group :development, :test do
 end
 
 gem 'google-apis-sheets_v4', '~> 0.18'
-gem 'googleauth', '~> 1.1'
+gem 'googleauth', '~> 1.13'
 
 gem "aws-sdk-s3", "~> 1.180"
